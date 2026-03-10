@@ -73,26 +73,65 @@ function IconUser() {
   );
 }
 
+function IconCamera() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+      <circle cx="12" cy="13" r="4" />
+    </svg>
+  );
+}
+
+function IconMapPin() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+
+function IconClipboard() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+      <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+    </svg>
+  );
+}
+
+function IconFilter() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+    </svg>
+  );
+}
+
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const features = [
   {
-    icon: "📷",
+    icon: <IconCamera />,
+    color: "bg-orange-100 text-orange-600",
     title: "Scan QR Code",
     desc: "Identifikasi aset fisik langsung via kamera HP",
   },
   {
-    icon: "🗺️",
+    icon: <IconMapPin />,
+    color: "bg-emerald-100 text-emerald-600",
     title: "Tracking Lokasi",
     desc: "Lihat posisi aset di Google Maps secara visual",
   },
   {
-    icon: "📋",
+    icon: <IconClipboard />,
+    color: "bg-blue-100 text-blue-600",
     title: "Katalog Digital",
     desc: "Kelola data aset lengkap dalam satu platform",
   },
   {
-    icon: "🔍",
+    icon: <IconFilter />,
+    color: "bg-violet-100 text-violet-600",
     title: "Filter & Cari",
     desc: "Temukan aset berdasarkan nama, kategori, dll",
   },
@@ -226,7 +265,9 @@ export default function HomePage() {
         <div className="grid grid-cols-2 gap-3">
           {features.map((f) => (
             <div key={f.title} className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
-              <div className="text-2xl mb-2">{f.icon}</div>
+              <div className={`w-9 h-9 rounded-xl flex items-center justify-center mb-3 ${f.color}`}>
+                {f.icon}
+              </div>
               <p className="font-semibold text-slate-700 text-[13px]">{f.title}</p>
               <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">{f.desc}</p>
             </div>

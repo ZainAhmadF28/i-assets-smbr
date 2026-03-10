@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f8fafc;
+  color: #1e293b;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* safe-area padding for mobile notch/home indicator */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 8px);
+}

@@ -140,48 +140,14 @@ export default function HomePage() {
 
       {/* ── HERO WITH BG IMAGE ── */}
       <section
-        className="relative min-h-[340px] md:min-h-[400px] flex flex-col bg-cover bg-center bg-no-repeat"
+        className="relative min-h-[220px] md:min-h-[280px] flex flex-col justify-end bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/img/background.png')" }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/60" />
 
-        {/* Top bar: logo + login */}
-        <div className="relative z-10 flex items-center justify-between px-5 pt-10 max-w-2xl mx-auto w-full">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
-              <span className="text-white font-black text-[11px] tracking-tight">IA</span>
-            </div>
-            <div>
-              <p className="font-bold text-white text-sm leading-none">I-Asset SMBR</p>
-              <p className="text-[10px] text-white/60 leading-none mt-0.5">PT Semen Baturaja</p>
-            </div>
-          </div>
-          <Link
-            href="/login"
-            className="text-xs font-semibold text-white bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-colors px-4 py-2 rounded-full"
-          >
-            Login Admin
-          </Link>
-        </div>
-
-        {/* Hero text */}
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-5 pb-10 pt-6 max-w-2xl mx-auto w-full">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full mb-4">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block" />
-            Sistem Aktif
-          </div>
-          <h1 className="text-2xl md:text-4xl font-extrabold text-white leading-tight tracking-tight">
-            Manajemen Aset<br />
-            <span className="text-blue-300">Digital SMBR</span>
-          </h1>
-          <p className="text-white/70 text-xs md:text-sm leading-relaxed max-w-xs mx-auto mt-2">
-            Kelola, lacak, dan identifikasi seluruh aset perusahaan secara terpusat.
-          </p>
-        </div>
-
-        {/* Search bar — overlaps into content below */}
-        <div className="relative z-20 px-4 pb-0 -mb-6 max-w-2xl mx-auto w-full">
+        {/* Search bar */}
+        <div className="relative z-20 px-4 pb-6 max-w-2xl mx-auto w-full">
           <div className="bg-white rounded-2xl shadow-2xl shadow-black/25 flex items-center gap-2 px-4 py-1 border border-slate-100">
             <span className="text-slate-400 flex-shrink-0">
               <IconSearch />
@@ -204,7 +170,7 @@ export default function HomePage() {
       </section>
 
       {/* ── ACTION CARDS ── */}
-      <section className="relative z-10 px-4 -mt-8 max-w-2xl mx-auto">
+      <section className="relative z-10 px-4 mt-5 max-w-2xl mx-auto">
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/80 border border-slate-100 overflow-hidden">
           <Link
             href="/scan"

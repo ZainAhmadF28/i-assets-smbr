@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import QRCode from "qrcode";
 import prisma from "../lib/prisma";
-import type { Kategori, Kondisi, Prisma } from "@prisma/client";
+import { Kategori, Kondisi } from "@prisma/client";
 
 // ── GET /api/assets ─────────────────────────────────────────────────────────
 export async function getAssets(req: Request, res: Response): Promise<void> {
@@ -183,11 +183,11 @@ export async function getQrCode(req: Request, res: Response): Promise<void> {
   }
 
   // QR Code berisi plain asset ID
-  const qrDataUrl: string = await QRCode.toDataURL(id, {
+  const qrDataUrl = await (QRCode.toDataURL as (text: string, opts: object) => Promise<string>)(id, {
     width: 400,
     margin: 2,
     color: { dark: "#1a1a2e", light: "#ffffff" },
-  } as QRCode.QRCodeToDataURLOptions);
+  });
 
   // Kirim sebagai PNG image
   const base64Data = qrDataUrl.replace(/^data:image\/png;base64,/, "");

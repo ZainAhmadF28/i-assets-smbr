@@ -183,14 +183,14 @@ export default function HomePage() {
 
       {/* ── HERO WITH BG IMAGE ── */}
       <section
-        className="relative min-h-[220px] md:min-h-[280px] flex flex-col justify-end bg-cover bg-center bg-no-repeat"
+        className="relative min-h-[220px] md:min-h-[280px] flex flex-col justify-start bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/img/background.png')" }}
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/60" />
 
         {/* Search bar */}
-        <div className="relative z-20 px-4 pb-6 max-w-2xl mx-auto w-full">
+        <div className="relative z-20 px-4 pt-6 max-w-2xl mx-auto w-full">
           <div className="bg-white rounded-2xl shadow-2xl shadow-black/25 flex items-center gap-2 px-4 py-1 border border-slate-100">
             <span className="text-slate-400 flex-shrink-0">
               <IconSearch />

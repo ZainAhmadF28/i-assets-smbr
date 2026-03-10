@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { useState } from "react";
 
 // ─── Icon Components ───────────────────────────────────────────────────────────
 
@@ -131,48 +133,73 @@ function NavBtn({
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
+  const [search, setSearch] = useState("");
+
   return (
     <div className="min-h-screen bg-slate-50">
 
-      {/* ── HEADER ── */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <div className="max-w-2xl mx-auto flex items-center justify-between px-4 py-3">
+      {/* ── HERO WITH BG IMAGE ── */}
+      <section
+        className="relative min-h-[340px] md:min-h-[400px] flex flex-col bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/img/background.png')" }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/70" />
+
+        {/* Top bar: logo + login */}
+        <div className="relative z-10 flex items-center justify-between px-5 pt-10 max-w-2xl mx-auto w-full">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center shadow-sm shadow-blue-200">
+            <div className="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
               <span className="text-white font-black text-[11px] tracking-tight">IA</span>
             </div>
             <div>
-              <p className="font-bold text-slate-800 text-sm leading-none">I-Asset SMBR</p>
-              <p className="text-[10px] text-slate-400 leading-none mt-0.5">PT Semen Baturaja</p>
+              <p className="font-bold text-white text-sm leading-none">I-Asset SMBR</p>
+              <p className="text-[10px] text-white/60 leading-none mt-0.5">PT Semen Baturaja</p>
             </div>
           </div>
           <Link
             href="/login"
-            className="text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors px-4 py-2 rounded-full"
+            className="text-xs font-semibold text-white bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-colors px-4 py-2 rounded-full"
           >
-            Login
+            Login Admin
           </Link>
         </div>
-      </header>
 
-      {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 px-5 pt-10 pb-20">
-        <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-white/5 translate-x-1/3 -translate-y-1/3 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-56 h-56 rounded-full bg-white/5 -translate-x-1/4 translate-y-1/4 pointer-events-none" />
-        <div className="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-white/5 pointer-events-none" />
-
-        <div className="relative max-w-2xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full mb-5">
+        {/* Hero text */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-5 pb-10 pt-6 max-w-2xl mx-auto w-full">
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full mb-4">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block" />
             Sistem Aktif
           </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-3 tracking-tight">
+          <h1 className="text-2xl md:text-4xl font-extrabold text-white leading-tight tracking-tight">
             Manajemen Aset<br />
-            <span className="text-blue-200">Digital SMBR</span>
+            <span className="text-blue-300">Digital SMBR</span>
           </h1>
-          <p className="text-blue-100/90 text-sm md:text-base leading-relaxed max-w-sm mx-auto">
-            Kelola, lacak, dan identifikasi seluruh aset perusahaan secara terpusat dan efisien.
+          <p className="text-white/70 text-xs md:text-sm leading-relaxed max-w-xs mx-auto mt-2">
+            Kelola, lacak, dan identifikasi seluruh aset perusahaan secara terpusat.
           </p>
+        </div>
+
+        {/* Search bar — overlaps into content below */}
+        <div className="relative z-20 px-4 pb-0 -mb-6 max-w-2xl mx-auto w-full">
+          <div className="bg-white rounded-2xl shadow-2xl shadow-black/25 flex items-center gap-2 px-4 py-1 border border-slate-100">
+            <span className="text-slate-400 flex-shrink-0">
+              <IconSearch />
+            </span>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Cari nama atau ID aset..."
+              className="flex-1 text-sm text-slate-700 placeholder-slate-400 outline-none bg-transparent py-3.5"
+            />
+            <Link
+              href={`/assets${search ? `?q=${encodeURIComponent(search)}` : ""}`}
+              className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white px-4 py-2 rounded-xl text-xs font-semibold transition-colors flex-shrink-0"
+            >
+              Cari
+            </Link>
+          </div>
         </div>
       </section>
 

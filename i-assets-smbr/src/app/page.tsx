@@ -113,34 +113,38 @@ function IconFilter() {
 const features = [
   {
     icon: <IconCamera />,
-    color: "bg-orange-100 text-orange-600",
+    bgColor: "#135d3a1a",
+    textColor: "#135d3a",
     title: "Scan QR Code",
     desc: "Identifikasi aset fisik langsung via kamera HP",
   },
   {
     icon: <IconMapPin />,
-    color: "bg-emerald-100 text-emerald-600",
+    bgColor: "#d7362d1a",
+    textColor: "#d7362d",
     title: "Tracking Lokasi",
     desc: "Lihat posisi aset di Google Maps secara visual",
   },
   {
     icon: <IconClipboard />,
-    color: "bg-blue-100 text-blue-600",
+    bgColor: "#135d3a1a",
+    textColor: "#135d3a",
     title: "Katalog Digital",
     desc: "Kelola data aset lengkap dalam satu platform",
   },
   {
     icon: <IconFilter />,
-    color: "bg-violet-100 text-violet-600",
+    bgColor: "#d7362d1a",
+    textColor: "#d7362d",
     title: "Filter & Cari",
     desc: "Temukan aset berdasarkan nama, kategori, dll",
   },
 ];
 
 const stats = [
-  { label: "Total Aset", value: "—", colorClass: "text-blue-600" },
-  { label: "Kategori", value: "—", colorClass: "text-violet-600" },
-  { label: "Lokasi", value: "—", colorClass: "text-emerald-600" },
+  { label: "Total Aset", value: "—", colorClass: "text-[#135d3a]" },
+  { label: "Kategori", value: "—", colorClass: "text-[#135d3a]" },
+  { label: "Lokasi", value: "—", colorClass: "text-[#d7362d]" },
 ];
 
 // ─── Nav Button ───────────────────────────────────────────────────────────────
@@ -160,7 +164,7 @@ function NavBtn({
     <Link
       href={href}
       className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-xl transition-colors ${
-        active ? "text-blue-600" : "text-slate-400 hover:text-slate-600"
+        active ? "text-[#135d3a]" : "text-slate-400 hover:text-slate-600"
       }`}
     >
       {children}
@@ -200,7 +204,8 @@ export default function HomePage() {
             />
             <Link
               href={`/assets${search ? `?q=${encodeURIComponent(search)}` : ""}`}
-              className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white px-4 py-2 rounded-xl text-xs font-semibold transition-colors flex-shrink-0"
+              className="text-white px-4 py-2 rounded-xl text-xs font-semibold transition-colors flex-shrink-0"
+              style={{ backgroundColor: '#135d3a' }}
             >
               Cari
             </Link>
@@ -213,9 +218,9 @@ export default function HomePage() {
         <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/80 border border-slate-100 overflow-hidden">
           <Link
             href="/scan"
-            className="flex items-center gap-4 p-5 hover:bg-orange-50/60 active:bg-orange-50 transition-colors border-b border-slate-100"
+            className="flex items-center gap-4 p-5 hover:bg-red-50/40 active:bg-red-50/60 transition-colors border-b border-slate-100"
           >
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center shadow-sm shadow-orange-200 flex-shrink-0 text-white">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 text-white" style={{ backgroundColor: '#d7362d' }}>
               <IconScan />
             </div>
             <div className="flex-1 min-w-0">
@@ -229,9 +234,9 @@ export default function HomePage() {
 
           <Link
             href="/assets"
-            className="flex items-center gap-4 p-5 hover:bg-blue-50/60 active:bg-blue-50 transition-colors"
+            className="flex items-center gap-4 p-5 hover:bg-green-50/40 active:bg-green-50/60 transition-colors"
           >
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-sm shadow-blue-200 flex-shrink-0 text-white">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 text-white" style={{ backgroundColor: '#135d3a' }}>
               <IconList />
             </div>
             <div className="flex-1 min-w-0">
@@ -265,7 +270,7 @@ export default function HomePage() {
         <div className="grid grid-cols-2 gap-3">
           {features.map((f) => (
             <div key={f.title} className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
-              <div className={`w-9 h-9 rounded-xl flex items-center justify-center mb-3 ${f.color}`}>
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: f.bgColor, color: f.textColor }}>
                 {f.icon}
               </div>
               <p className="font-semibold text-slate-700 text-[13px]">{f.title}</p>
@@ -292,11 +297,12 @@ export default function HomePage() {
           <div className="flex flex-col items-center -mt-7">
             <Link
               href="/scan"
-              className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-300 active:scale-95 transition-transform text-white"
+              className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg active:scale-95 transition-transform text-white"
+              style={{ backgroundColor: '#d7362d', boxShadow: '0 8px 20px #d7362d40' }}
             >
               <IconScan />
             </Link>
-            <span className="text-[10px] text-orange-500 font-semibold mt-1">Scan</span>
+            <span className="text-[10px] font-semibold mt-1" style={{ color: '#d7362d' }}>Scan</span>
           </div>
 
           <NavBtn href="/assets" label="Cari">
